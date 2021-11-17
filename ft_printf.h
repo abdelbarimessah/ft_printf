@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amessah <amessah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 14:13:19 by amessah           #+#    #+#             */
-/*   Updated: 2021/11/06 18:48:26 by amessah          ###   ########.fr       */
+/*   Created: 2021/11/17 19:14:43 by amessah           #+#    #+#             */
+/*   Updated: 2021/11/17 23:57:27 by amessah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_PRINTF_H
+#define FT_PRINTF_H
+#include <stdarg.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <stdio.h>
 
-int	ft_isascii(int c)
-{
-	if (c >= 0 && c <= 127)
-		return (1);
-	else
-		return (0);
-}
+int ft_printf(const char *format, ...);
+int convertion(va_list scrol,const char *format,int i);
+int print_percent(void);
+int print_c(va_list scrol);
+void    ft_putchar(char c);
 
-/*int main(int ac ,char *av[])
-{
-    printf("%d\n",ft_isascii(av[1][0]));
-    printf("%d",isascii(av[1][0]));
-}*/
+
+
+
+#endif

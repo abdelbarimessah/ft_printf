@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_printf_function.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amessah <amessah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 14:44:56 by amessah           #+#    #+#             */
-/*   Updated: 2021/11/12 10:57:53 by amessah          ###   ########.fr       */
+/*   Created: 2021/11/17 21:42:41 by amessah           #+#    #+#             */
+/*   Updated: 2021/11/17 23:38:04 by amessah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_strchr(const char *s, int c)
+void    ft_putchar(char c)
 {
-	char	c1;
-	char	*str;
-	int		i;
-
-	c1 = (char )c;
-	str = (char *)s;
-	i = 0;
-	if (c1 == '\0')
-		return (str + ft_strlen(str));
-	while (str[i])
-	{
-		if (str[i] == c1)
-			return (str + i);
-		i++;
-	}
-	return (NULL);
+    write(1, &c, 1);
 }
-/*
-int main()
+
+int print_percent(void)
 {
-    char t[] = "abdomesaah";
-    printf("%s\n",ft_strchr(t,'a'));
-    char j[] = "abdomesaah";
-    printf("%s",ft_strchr(j,'a'));
-}*/
+    write(1, "%%",1);
+    return (1);
+}
+
+int print_c(va_list scrol)
+{
+    char    *c;
+    c = va_arg(scrol,char *);
+    write(1, &c, 1);
+    return (1);
+}
