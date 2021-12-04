@@ -6,21 +6,21 @@
 /*   By: amessah <amessah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 14:44:05 by amessah           #+#    #+#             */
-/*   Updated: 2021/11/20 16:11:34 by amessah          ###   ########.fr       */
+/*   Updated: 2021/12/04 14:44:33 by amessah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	size(long int nb)
+static int	size(long int nb)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	if (nb == 0)
 		return (1);
-	if (nb != 0)
-	{
+	while (nb / 10)
+	{	
 		i++;
 		nb = nb / 10;
 	}
@@ -76,13 +76,18 @@ int	print_d(va_list scrol)
 
 	lengh = 0;
 	nb = va_arg(scrol, int);
+	if (nb == 0)
+	{
+		ft_putnbr(nb);
+		return (1);
+	}
 	if (nb < 0)
 	{
 		lengh++;
 		lengh += size(-nb);
 	}
 	else
-		lengh = size(nb);
+		lengh += size(nb);
 	ft_putnbr(nb);
 	return (lengh);
 }

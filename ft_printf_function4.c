@@ -6,31 +6,41 @@
 /*   By: amessah <amessah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 15:16:44 by amessah           #+#    #+#             */
-/*   Updated: 2021/11/20 16:12:53 by amessah          ###   ########.fr       */
+/*   Updated: 2021/12/04 14:45:51 by amessah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr_long(unsigned int n)
+int	ft_putnbr_long(unsigned int n)
 {
-	if (n < 9)
-		ft_putchar(n + 48);
-	else
+	unsigned int	i;
+
+	i = 1;
+	while (n / 10)
 	{
-		ft_putnbr_long(n / 10);
-		ft_putnbr_long(n % 10);
+		n /= 10;
+		i *= 10;
 	}
+	return (i);
 }
 
 int	print_u(va_list scrol)
 {
-	unsigned int	nb;
-	int				lengh;
+	unsigned int	div;
+	unsigned int	i;
+	unsigned int	samenum;
+	int				v;
 
-	lengh = 0;
-	nb = va_arg(scrol, unsigned int);
-	ft_putnbr_long(nb);
-	lengh = size(nb);
-	return (lengh);
+	v = 0;
+	samenum = va_arg(scrol, unsigned int);
+	div = ft_putnbr_long(samenum);
+	while (div)
+	{
+		i = (samenum / div) % 10 + 48;
+		ft_putchar(i);
+		div /= 10;
+		v++;
+	}
+	return (v);
 }

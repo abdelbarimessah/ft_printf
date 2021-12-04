@@ -6,7 +6,7 @@
 /*   By: amessah <amessah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:18:25 by amessah           #+#    #+#             */
-/*   Updated: 2021/11/20 16:08:53 by amessah          ###   ########.fr       */
+/*   Updated: 2021/12/04 20:15:06 by amessah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	convertion(va_list scrol, const char *format, int i)
 		return (print_d(scrol));
 	else if (format[i + 1] == 'i')
 		return (print_i(scrol));
-	if (format[i + 1] == 'u')
+	else if (format[i + 1] == 'u')
 		return (print_u(scrol));
 	else if (format[i + 1] == 'x')
 		return (print_x(scrol));
@@ -40,7 +40,6 @@ int	ft_printf(const char *format, ...)
 	va_list	scrol;
 	int		i;
 	int		cnt;
-	char	c;
 
 	i = 0;
 	cnt = 0;
@@ -65,8 +64,7 @@ int	ft_printf(const char *format, ...)
 /*
 int main()
 {
-	int i = 506;
 
-	ft_printf("%u\n",i);
-   printf("%u\n",i);
+   	//printf("%p\n",5);
+	ft_printf("%psss",8);
 }*/
